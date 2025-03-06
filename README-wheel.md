@@ -6,7 +6,7 @@ PyTorch programs.
 
 The `executorch` pip package is in beta.
 * Supported python versions: 3.10, 3.11, 3.12
-* Compatible systems: Linux x86_64, macOS aarch64
+* Compatible systems: Linux x86_64, macOS aarch64, Windows x86_64
 
 The prebuilt `executorch.runtime` module included in this package provides a way
 to run ExecuTorch `.pte` files, with some restrictions:

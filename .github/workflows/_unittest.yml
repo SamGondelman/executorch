@@ -50,3 +50,14 @@ jobs:
       script: |
         set -eux
         .ci/scripts/unittest-macos.sh --build-tool "${{ inputs.build-tool }}" --build-mode "${{ inputs.build-mode }}" --editable "${{ inputs.editable }}"
+
+  windows:
+    uses: pytorch/test-infra/.github/workflows/windows_job.yml@main
+    with:
+      runner: windows
+      python-version: '3.11'
+      submodules: 'true'
+      ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+      script: |
+        set -eux
+        .ci/scripts/unittest-windows.sh --build-tool "${{ inputs.build-tool }}" --build-mode "${{ inputs.build-mode }}" --editable "${{ inputs.editable }}"

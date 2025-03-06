@@ -22,6 +22,7 @@ Platform Support:
   - Mac
   - Android
   - Linux
+  - Windows
   - Microcontrollers
 
 - Hardware Acceleration:

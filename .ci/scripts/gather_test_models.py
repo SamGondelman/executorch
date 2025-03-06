@@ -16,6 +16,7 @@ from examples.xnnpack import MODEL_NAME_TO_OPTIONS
 DEFAULT_RUNNERS = {
     "linux": "linux.2xlarge",
     "macos": "macos-m1-stable",
+    "windows": "windows",
 }
 CUSTOM_RUNNERS = {
     "linux": {
@@ -42,6 +43,11 @@ CUSTOM_TIMEOUT = {
         "llama3_2_text_decoder": 360,
     },
     "macos": {
+        "mobilebert": 90,
+        "emformer_predict": 360,
+        "llama3_2_text_decoder": 360,
+    },
+    "windows": {
         "mobilebert": 90,
         "emformer_predict": 360,
         "llama3_2_text_decoder": 360,
@@ -137,7 +143,7 @@ def export_models_for_ci() -> dict[str, dict]:
             models["include"].append(record)
 
     # Add all models for CMake E2E validation
-    # CMake supports both linux and macos
+    # CMake supports linux, macos, and windows
     for name, backend in itertools.product(
         MODEL_NAME_TO_MODEL.keys(), ["portable", "xnnpack"]
     ):
